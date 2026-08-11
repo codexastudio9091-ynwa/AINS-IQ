@@ -6,7 +6,7 @@ class WebPromoBanner extends StatelessWidget {
   const WebPromoBanner({super.key});
 
   // 🔴 CHANGE THIS TO 'true' ONCE YOUR PLAY STORE APP IS LIVE!
-  static const bool isMobileAppLive = false;
+  static const bool isMobileAppLive = true;
 
   // Paste your Google Play Store URL here once live
   static const String playStoreUrl =
@@ -22,16 +22,13 @@ class WebPromoBanner extends StatelessWidget {
       margin: const EdgeInsets.all(12),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: isMobileAppLive
               ? [
-                  const Color(0xFF0D47A1),
-                  const Color(0xFF1976D2)
+                  Color(0xFF0D47A1),
+                  Color(0xFF1976D2)
                 ] // Deep Navy to Royal Blue
-              : [
-                  const Color(0xFF2E7D32),
-                  const Color(0xFF43A047)
-                ], // Fresh Green Gradient
+              : [Color(0xFF2E7D32), Color(0xFF43A047)], // Fresh Green Gradient
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
@@ -52,7 +49,7 @@ class WebPromoBanner extends StatelessWidget {
               color: Colors.white.withOpacity(0.2),
               shape: BoxShape.circle,
             ),
-            child: Icon(
+            child: const Icon(
               isMobileAppLive
                   ? Icons.get_app_rounded
                   : Icons.rocket_launch_rounded,
@@ -66,11 +63,11 @@ class WebPromoBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   isMobileAppLive
                       ? '📱 AINS IQ is now live on Google Play!'
                       : '⚡ AINS IQ Mobile App Coming Soon!',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 14,

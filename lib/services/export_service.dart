@@ -48,14 +48,15 @@ class ExportService {
 
     // PLATFORM CHECK: WEB vs MOBILE
     if (kIsWeb) {
-      // Create a virtual file in memory for web browsers to download
+      // Force standard browser download instead of Web Share API
       final bytes = Uint8List.fromList(utf8.encode(csvData));
       final xFile =
           XFile.fromData(bytes, mimeType: 'text/csv', name: 'NILAM_Report.csv');
-      await Share.shareXFiles([xFile],
-          text: 'Here is my NILAM reading log data.');
+
+      // On web, saveTo() triggers an automatic download to the user's Downloads folder
+      await xFile.saveTo('NILAM_Report.csv');
     } else {
-      // Save locally to device storage on mobile
+      // Save locally to device storage on mobile and open Share menu
       final dir = await getTemporaryDirectory();
       final file = File('${dir.path}/NILAM_Report.csv');
       await file.writeAsString(csvData);
@@ -130,13 +131,14 @@ class ExportService {
 
     // PLATFORM CHECK: WEB vs MOBILE
     if (kIsWeb) {
-      // Create a virtual file in memory for web browsers to download
+      // Force standard browser download instead of Web Share API
       final xFile = XFile.fromData(pdfBytes,
           mimeType: 'application/pdf', name: 'NILAM_Report.pdf');
-      await Share.shareXFiles([xFile],
-          text: 'Here is my official NILAM Reading PDF Report.');
+
+      // On web, saveTo() triggers an automatic download to the user's Downloads folder
+      await xFile.saveTo('NILAM_Report.pdf');
     } else {
-      // Save locally to device storage on mobile
+      // Save locally to device storage on mobile and open Share menu
       final dir = await getTemporaryDirectory();
       final file = File('${dir.path}/NILAM_Report.pdf');
       await file.writeAsBytes(pdfBytes);
