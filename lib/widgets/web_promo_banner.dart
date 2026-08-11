@@ -6,7 +6,7 @@ class WebPromoBanner extends StatelessWidget {
   const WebPromoBanner({super.key});
 
   // 🔴 CHANGE THIS TO 'true' ONCE YOUR PLAY STORE APP IS LIVE!
-  static const bool isMobileAppLive = true;
+  static const bool isMobileAppLive = false;
 
   // Paste your Google Play Store URL here once live
   static const String playStoreUrl =
