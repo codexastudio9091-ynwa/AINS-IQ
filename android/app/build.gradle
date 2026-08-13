@@ -31,19 +31,24 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.ains.nilam.ains_flutter_app"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdkVersion 36 // <-- Updated to API 36
+    buildToolsVersion "36.0.0" // <-- Updated to match API 36
+    ndkVersion = "26.1.10909125"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
     }
 
     defaultConfig {
         // Your unique Application ID for Google Play Store
         applicationId = "com.ainsiq.app"
         minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        targetSdkVersion 36 // <-- Updated to API 36
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
